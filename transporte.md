@@ -97,7 +97,7 @@
 
 **URI**: 
 ```
-transporteRestProd/lineas/{parada} 
+transporteRest/lineas/{parada} 
 ```
 
 **Descripción**: Recibe un código de parada de ómnibus, y devuelve la descripcion de la parada y la lista de líneas que pasan por ella. 
@@ -110,12 +110,13 @@ import urllib
 import urllib2
 
 codigo_parada=3029
-url_base='http://www.montevideo.gub.uy/transporteRestProd/'
+url_base='http://www.montevideo.gub.uy/transporteRest/'
 
 r=urllib2.urlopen(url_base+'lineas/'+str(codigo_parada))
 web_pg=r.read()
 j=json.loads(web_pg)
-print "Parada:",j['descripcion']for linea in j['lineas']:
+print "Parada:",j['descripcion']
+for linea in j['lineas']:
 	print "Línea:",linea['codigo'],linea['descripcion']
 ```
 ### Horarios de pasada 
@@ -124,8 +125,8 @@ print "Parada:",j['descripcion']for linea in j['lineas']:
 
 **URI**: 
 ```
-transporteRestProd/{parada}/{tipo_dia} 
-transporteRestProd/pasadas/{parada}/{tipo_dia}/{hora} 
+transporteRest/{parada}/{tipo_dia} 
+transporteRest/pasadas/{parada}/{tipo_dia}/{hora} 
 ```
 
 **Descripción**: Recibe un código de parada de ómnibus, y un tipo de día ("HABIL","SABADO","DOMINGO") y devuelve la lista de todas las pasadas en el día. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada. 
@@ -139,7 +140,7 @@ import urllib2
 
 codigo_parada=3029
 tipo_dia='HABIL'
-url_base='http://www.montevideo.gub.uy/transporteRestProd/'
+url_base='http://www.montevideo.gub.uy/transporteRest/'
 
 r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia)
 web_pg=r.read()
@@ -154,8 +155,8 @@ for pasada in j:
 
 **URI**: 
 ```
-transporteRestProd/pasadas/{parada\}/{tipo_dia}/{linea}
-transporteRestProd/pasadas/{parada\}/{tipo_dia}/{linea}/{hora} 
+transporteRest/pasadas/{parada\}/{tipo_dia}/{linea}
+transporteRest/pasadas/{parada\}/{tipo_dia}/{linea}/{hora} 
 ```
 
 **Descripción**: Recibe un código de parada de ómnibus, un tipo de día, y un código de línea de ómnibus, y devuelve la lista de todas las pasadas en el día, para esa línea. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada, de la línea especificada.
@@ -170,7 +171,7 @@ codigo_parada=3029
 tipo_dia='HABIL'
 codigo_linea=3 #Código de la línea 405
 hora='18:30'
-url_base='http://www.montevideo.gub.uy/transporteRestProd/'
+url_base='http://www.montevideo.gub.uy/transporteRest/'
 
 r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia+'/'+str(codigo_linea)+'/'+hora)
 web_pg=r.read()
