@@ -124,9 +124,20 @@ for vias in j:
 
 ```
 
+### Búsqueda de esquinas 
 
- {code} |
-| Ubicación | ubicacionesRestWEB/ubicacion/esquina/\{via1\}/\{via2} | Recibe en los tokens \{via1\} y \{via2\} dos códigos de vía válidos, y devuelve el punto del mapa con la ubicación | {code}import json
+**Recurso**: Ubicación 
+
+**URI**: 
+```
+ubicacionesRestWEB/ubicacion/esquina/{via1}/{via2} 
+```
+
+**Descripción**: Recibe en los tokens `via1` y `via2` dos códigos de vía válidos, y devuelve el punto del mapa con la ubicación 
+
+**Ejemplo** (Python): 
+```
+import json
 import urllib
 import urllib2
 
@@ -138,8 +149,21 @@ r=urllib2.urlopen(url_base+'esquina/'+str(codigo_via_1)+'/'+str(codigo_via_2))
 web_pg=r.read()
 j=json.loads(web_pg)
 print j['geom']['coordinates']
- {code} |
-| Ubicación | ubicacionesRestWEB/ubicacion/direccion/\{via\}/\{puerta\} | Recibe en los tokens \{via\} y \{puerta\} el código de una vía y un número de puerta, y devuelve el punto en el mapa correspondiente | {code}
+```
+
+### Búsqueda de direcciones 
+
+**Recurso**: Ubicación 
+
+**URI**: 
+```
+ubicacionesRestWEB/ubicacion/direccion/{via}/{puerta} | 
+```
+
+**Descripción**: Recibe en los tokens `via` y `puerta` el código de una vía y un número de puerta, y devuelve el punto correspondiente en el mapa
+
+**Ejemplo** (Python): 
+```
 import json
 import urllib
 import urllib2
@@ -152,16 +176,21 @@ r=urllib2.urlopen(url_base+'direccion/'+str(codigo_via)+'/'+str(puerta))
 web_pg=r.read()
 j=json.loads(web_pg)
 print j['geom']['coordinates']
- {code} |
-| Ubicación | ubicacionesRestWEB/ubicacion/padron/\{numero\} | Recibe el token numero correspondiente al numero de paron y devuelve el centroide del mismo\\ | |
+```
 
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+### Búsqueda de padrón 
 
-The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
+**Recurso**: Ubicación
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+**URI**: 
+```
+ubicacionesRestWEB/ubicacion/padron/{numero} 
+```
+
+**Descripción**: Recibe el token numero correspondiente al numero de padrón y devuelve su centroide
+
+
+**Ejemplo** (Python): 
+
+```
+```
