@@ -155,8 +155,8 @@ for pasada in j:
 
 **URI**: 
 ```
-transporteRest/pasadas/{parada\}/{tipo_dia}/{linea}
-transporteRest/pasadas/{parada\}/{tipo_dia}/{linea}/{hora} 
+transporteRest/pasadas/{parada}/{tipo_dia}/{linea}
+transporteRest/pasadas/{parada}/{tipo_dia}/{linea}/{hora} 
 ```
 
 **Descripción**: Recibe un código de parada de ómnibus, un tipo de día, y un código de línea de ómnibus, y devuelve la lista de todas las pasadas en el día, para esa línea. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada, de la línea especificada.
