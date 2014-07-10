@@ -7,13 +7,13 @@ Servicios RESTful de Ubicaciones
 
 ### Calle
 
-Métodos: GET
+**Métodos**: GET
 
-Descripción: Este recurso incluye el código y el nombre de una calle
+**Descripción**: Este recurso incluye el código y el nombre de una calle
 
-Media-Type: application/json
+**Media-Type**: application/json
 
-Schema:
+*Schema*:
 ```
 	{
 	"title" : "calle",
@@ -27,19 +27,18 @@ Schema:
 	}
 ```
 
-Ejemplo:
+*Ejemplo*:
 ```
 {"nombre": "AV AGRACIADA" , "codigo" : 126} 
 ```
 ### Ubicación
 
+*Métodos*: GET
 
-Métodos: GET
+*Descripción*: Punto en el mapa 
 
-Desripción: Punto en el mapa 
-
-Media-Type: application/geojson 
-Schema:
+*Media-Type*: application/geojson 
+*Schema*:
 ```
 {
 	"title": "ubicacion",
@@ -57,7 +56,7 @@ Schema:
  } 
 ```
 
-Ejemplo:
+*Ejemplo*:
 ```
 {"geom":\{"type":"Point","coordinates":[573153.204,6140488.1186]}
 ```
@@ -73,9 +72,9 @@ URI:
 ubicacionesRestWEB/ubicacion/calles/?nombre={texto} 
 ```
 
-Descripción: Recibe en el token \{texto\} parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre 
+*Descripción*: Recibe en el token \{texto\} parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre 
 
-Ejemplo (python): 
+*Ejemplo* (python): 
 
 ```
 import json
