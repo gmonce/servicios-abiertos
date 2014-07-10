@@ -68,7 +68,7 @@
 
 **URI**: 
 ```
-ubicacionesRest/ubicacion/calles/?nombre={texto} 
+ubicacionesRest/calles/?nombre={texto} 
 ```
 
 **Descripción**: Recibe en el token `texto` parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre 
@@ -83,7 +83,7 @@ import urllib2
 nombre_via='agra'
 url_base='http://www.montevideo.gub.uy/ubicacionesRest/'
 
-print url_base+'ubicacion/calles/?nombre='+nombre_via
+print url_base+'calles/?nombre='+nombre_via
 r=urllib2.urlopen(url_base+'calles/?nombre='+nombre_via)
 web_pg=r.read()
 j=json.loads(web_pg)
@@ -98,7 +98,7 @@ for vias in j:
 
 **URI**: 
 ```
-ubicacionesRest/ubicacion/cruces/{codigo_calle}/?nombre={texto} 
+ubicacionesRest/cruces/{codigo_calle}/?nombre={texto} 
 ```
 
 **Descripción**: Recibe en el token `codigo_calle` un código de vía válido y en el token `texto` parte del nombre de otra vía y devuelve una lista de vías que incluyan el texto y crucen a la calle original. Si no se incluye el texto, devuelve todos los cruces. 
@@ -128,7 +128,7 @@ for vias in j:
 
 **URI**: 
 ```
-ubicacionesRest/ubicacion/esquina/{via1}/{via2} 
+ubicacionesRest/esquina/{via1}/{via2} 
 ```
 
 **Descripción**: Recibe en los tokens `via1` y `via2` dos códigos de vía válidos, y devuelve el punto del mapa con la ubicación 
@@ -155,7 +155,7 @@ print j['geom']['coordinates']
 
 **URI**: 
 ```
-ubicacionesRest/ubicacion/direccion/{via}/{puerta} | 
+ubicacionesRest/direccion/{via}/{puerta} | 
 ```
 
 **Descripción**: Recibe en los tokens `via` y `puerta` el código de una vía y un número de puerta, y devuelve el punto correspondiente en el mapa
@@ -182,7 +182,7 @@ print j['geom']['coordinates']
 
 **URI**: 
 ```
-ubicacionesRest/ubicacion/padron/{numero} 
+ubicacionesRest/padron/{numero} 
 ```
 
 **Descripción**: Recibe el token numero correspondiente al numero de padrón y devuelve su centroide
