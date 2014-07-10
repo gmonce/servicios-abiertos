@@ -11,7 +11,7 @@ Recursos
 | Recurso       | Métodos | Descripción | Media-Type | Schema | Ejemplo |
 | ------------- | ------- | ----------- | ---------- | ------ | ------- |
 | Calle | 
-| Calle (debería ser vía) | GET | Este recurso incluye el código y el nombre de una calle | application/json | {code}{ \\
+| Calle (debería ser vía) | GET | Este recurso incluye el código y el nombre de una calle | application/json | {code}{ \
 	"title" : "calle",
 	"type" : "object",
 	"properties" : {
