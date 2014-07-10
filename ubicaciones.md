@@ -64,9 +64,20 @@ Ejemplo:
 
 ## URIs
 
+### Búsqueda de calle por nombre
 
-|| Recurso || URI || Descripción || Ejemplo (python) ||
-| Calle | ubicacionesRestWEB/ubicacion/calles/?nombre=\{texto\} | Recibe en el token \{texto\} parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre | {code}
+Recurso: Calle
+
+URI: 
+```
+ubicacionesRestWEB/ubicacion/calles/?nombre={texto} 
+```
+
+Descripción: Recibe en el token \{texto\} parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre 
+
+Ejemplo (python): 
+
+```
 import json
 import urllib
 import urllib2
@@ -80,6 +91,8 @@ web_pg=r.read()
 j=json.loads(web_pg)
 for vias in j:
 	print vias['codigo'],vias['nombre']{code} |
+
+```
 | Calle | ubicacionesRestWEB/ubicacion/cruces/\{codigo_calle\}/?nombre=\{texto\} | Recibe en el token \{codigo_calle\} un código de vía válido y en el token \{texto\} parte del nombre de otra vía y devuelve una lista de vías que incluyan el texto y crucen a la calle original. Si no se incluye el texto, devuelve todos los cruces. | {code}
 import json
 import urllib
