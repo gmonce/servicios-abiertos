@@ -193,4 +193,16 @@ ubicacionesRest/ubicacion/padron/{numero}
 **Ejemplo** (Python): 
 
 ```
+import json
+import urllib
+import urllib2
+
+padron=1
+url_base='http://www.montevideo.gub.uy/ubicacionesRest/'
+
+r=urllib2.urlopen(url_base+'padron/'+str(padron))
+web_pg=r.read()
+j=json.loads(web_pg)
+print j['geom']['coordinates']
+~                                     
 ```
