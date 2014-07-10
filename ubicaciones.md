@@ -16,6 +16,7 @@ Descripción: Este recurso incluye el código y el nombre de una calle
 Media-Type: application/json
 
 Schema:
+```
 	{
 	"title" : "calle",
 	"type" : "object",
@@ -26,6 +27,7 @@ Schema:
 	"required": ["nombre" , "codigo"]
  	"description" : "Vía de tránsito de Montevideo"
 	}
+```
 
 Ejemplo:
 {code}
