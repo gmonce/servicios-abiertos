@@ -10,11 +10,13 @@ Recursos
 1. Calle
 
 Métodos: GET
-Descripción: Este recurso incluye el código y el nombre de una calle
-Media-Type: application/json
-Schema:
 
-{code}{ \
+Descripción: Este recurso incluye el código y el nombre de una calle
+
+Media-Type: application/json
+
+Schema:
+	{
 	"title" : "calle",
 	"type" : "object",
 	"properties" : {
@@ -23,7 +25,7 @@ Schema:
  	}
 	"required": ["nombre" , "codigo"]
  	"description" : "Vía de tránsito de Montevideo"
-}{code} 
+	}
 
 Ejemplo:
 {code}
