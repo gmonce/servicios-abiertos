@@ -155,7 +155,7 @@ print j['geom']['coordinates']
 
 **URI**: 
 ```
-ubicacionesRest/direccion/{via}/{puerta} | 
+ubicacionesRest/direccion/{via}/{puerta}  
 ```
 
 **Descripción**: Recibe en los tokens `via` y `puerta` el código de una vía y un número de puerta, y devuelve el punto correspondiente en el mapa
