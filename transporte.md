@@ -90,96 +90,7 @@
 {"hora":1656,"destino":"8 DE OCTUBRE Y COMERCIO","linea":"143","dia_anterior":"N","horaDesc":"16:56"}
 ```
 
-h2. Servicios
-
-
-|| Recurso || URI || Descripción || Ejemplo (python) ||
-| Parada y líneas | transporteRestProd/lineas/\{parada\} | Recibe un código de parada de ómnibus, y devuelve la descripcion de la parada y la lista de líneas que pasan por ella. | {code}import json
-import urllib
-import urllib2
-
-codigo_parada=3029
-url_base='http://www.montevideo.gub.uy/transporteRestProd/'
-
-r=urllib2.urlopen(url_base+'lineas/'+str(codigo_parada))
-web_pg=r.read()
-j=json.loads(web_pg)
-print "Parada:",j['descripcion']for linea in j['lineas']:
-	print "Línea:",linea['codigo'],linea['descripcion']
-{code} |
-| Lista de pasadas \\ | transporteRestProd/\{parada\}/\{tipo_dia\}&nbsp; \\
-\\
-transporteRestProd/pasadas/\{parada\}/\{tipo_dia\}/\{hora\} \\ | Recibe un código de parada de ómnibus, y un tipo de día ("HABIL","SABADO","DOMINGO") y devuelve la lista de todas las pasadas en el día. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada. \\ | {code}
-import json
-import urllib
-import urllib2
-
-codigo_parada=3029
-tipo_dia='HABIL'
-url_base='http://www.montevideo.gub.uy/transporteRestProd/'
-
-r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia)
-web_pg=r.read()
-j=json.loads(web_pg)
-for pasada in j:
-	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']{code} |
-| Lista de pasadas \\ | transporteRestProd/pasadas/\{parada\}/\{tipo_dia\}/\{linea\}&nbsp; \\
-\\
-transporteRestProd/pasadas/\{parada\}/\{tipo_dia\}/{linea\}/\{hora\} \\ | Recibe un código de parada de ómnibus, un tipo de día, y un código de línea de ómnibus, y devuelve la lista de todas las pasadas en el día, para esa línea. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada, de la línea especificada. \\ | {code}
-import json
-import urllib
-import urllib2
-
-codigo_parada=3029
-tipo_dia='HABIL'
-codigo_linea=3 #Código de la línea 405
-hora='18:30'
-url_base='http://www.montevideo.gub.uy/transporteRestProd/'
-
-r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia+'/'+str(codigo_linea)+'/'+hora)
-web_pg=r.read()
-j=json.loads(web_pg)
-for pasada in j:
-	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']{code} |
-
-
-h4.
-
-
-
-
-### Ubicación
-
-**Métodos**: GET
-
-**Descripción**: Punto en el mapa 
-
-**Media-Type**: application/geojson 
-
-**Schema**:
-```
-{
-	"title": "ubicacion",
-	"type": "object",
-	"properties":{
-		"geom" : {
-			"type" : "object",
-			"properties" : {
-				"type" : {"type" : "string"},
-				"coordinates" :  {"type" : "array" , "items" : { "type" : "number" }}
-		}
-	}
-	"required": ["geom"]
- 	"description": "Ubicación en Montevideo"
- } 
-```
-
-**Ejemplo**:
-```
-{"geom":\{"type":"Point","coordinates":[573153.204,6140488.1186]}
-```
-
-## URIs
+## URIs 
 
 ### Búsqueda de calle por nombre
 
@@ -210,17 +121,16 @@ for vias in j:
 	print vias['codigo'],vias['nombre']
 
 ```
-
-### Búsqueda de vías de tránsito que cruzan a otra 
-
-**Recurso**: Calle
+### Búsqueda de líneas por parada 
+**Recurso**: Parada y líneas 
 
 **URI**: 
 ```
-ubicacionesRest/cruces/{codigo_calle}/?nombre={texto} 
+transporteRestProd/lineas/{parada} 
 ```
 
-**Descripción**: Recibe en el token `codigo_calle` un código de vía válido y en el token `texto` parte del nombre de otra vía y devuelve una lista de vías que incluyan el texto y crucen a la calle original. Si no se incluye el texto, devuelve todos los cruces. 
+**Descripción**: Recibe un código de parada de ómnibus, y devuelve la descripcion de la parada y la lista de líneas que pasan por ella. 
+
 
 **Ejemplo** (Python): 
 ```
@@ -228,29 +138,56 @@ import json
 import urllib
 import urllib2
 
-codigo_via_origen=126
-nombre_via='a'
-url_base='http://www.montevideo.gub.uy/ubicacionesRest/'
-url=url_base+'cruces/'+str(codigo_via_origen)+'/?nombre='+nombre_via
-print url
-r=urllib2.urlopen(url)
+codigo_parada=3029
+url_base='http://www.montevideo.gub.uy/transporteRestProd/'
+
+r=urllib2.urlopen(url_base+'lineas/'+str(codigo_parada))
 web_pg=r.read()
 j=json.loads(web_pg)
-for vias in j:
-	print vias['codigo'],vias['nombre']
-
+print "Parada:",j['descripcion']for linea in j['lineas']:
+	print "Línea:",linea['codigo'],linea['descripcion']
 ```
+### Horarios de pasada 
 
-### Búsqueda de esquinas 
-
-**Recurso**: Ubicación 
+**Recurso**: Lista de pasadas 
 
 **URI**: 
 ```
-ubicacionesRest/esquina/{via1}/{via2} 
+transporteRestProd/{parada}/{tipo_dia} 
+transporteRestProd/pasadas/{parada}/{tipo_dia}/{hora} 
 ```
 
-**Descripción**: Recibe en los tokens `via1` y `via2` dos códigos de vía válidos, y devuelve el punto del mapa con la ubicación 
+**Descripción**: Recibe un código de parada de ómnibus, y un tipo de día ("HABIL","SABADO","DOMINGO") y devuelve la lista de todas las pasadas en el día. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada. 
+
+**Ejemplo** (Python): 
+```
+import json
+### Horarios de pasada 
+import urllib
+import urllib2
+
+codigo_parada=3029
+tipo_dia='HABIL'
+url_base='http://www.montevideo.gub.uy/transporteRestProd/'
+
+r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia)
+web_pg=r.read()
+j=json.loads(web_pg)
+for pasada in j:
+	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']{code} |
+```
+
+### Horarios de pasada, por línea
+
+**Recurso**: Lista de pasadas 
+
+**URI**: 
+```
+transporteRestProd/pasadas/{parada\}/{tipo_dia}/{linea}
+transporteRestProd/pasadas/{parada\}/{tipo_dia}/{linea}/{hora} 
+```
+
+**Descripción**: Recibe un código de parada de ómnibus, un tipo de día, y un código de línea de ómnibus, y devuelve la lista de todas las pasadas en el día, para esa línea. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada, de la línea especificada.
 
 **Ejemplo** (Python): 
 ```
@@ -258,67 +195,17 @@ import json
 import urllib
 import urllib2
 
-codigo_via_1=126
-codigo_via_2=636
-url_base='http://www.montevideo.gub.uy/ubicacionesRest/'
+codigo_parada=3029
+tipo_dia='HABIL'
+codigo_linea=3 #Código de la línea 405
+hora='18:30'
+url_base='http://www.montevideo.gub.uy/transporteRestProd/'
 
-r=urllib2.urlopen(url_base+'esquina/'+str(codigo_via_1)+'/'+str(codigo_via_2))
+r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia+'/'+str(codigo_linea)+'/'+hora)
 web_pg=r.read()
 j=json.loads(web_pg)
-print j['geom']['coordinates']
+for pasada in j:
+	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']{code} |
 ```
 
-### Búsqueda de direcciones 
 
-**Recurso**: Ubicación 
-
-**URI**: 
-```
-ubicacionesRest/direccion/{via}/{puerta}  
-```
-
-**Descripción**: Recibe en los tokens `via` y `puerta` el código de una vía y un número de puerta, y devuelve el punto correspondiente en el mapa
-
-**Ejemplo** (Python): 
-```
-import json
-import urllib
-import urllib2
-
-codigo_via=126
-puerta=3509
-url_base='http://www.montevideo.gub.uy/ubicacionesRest/'
-
-r=urllib2.urlopen(url_base+'direccion/'+str(codigo_via)+'/'+str(puerta))
-web_pg=r.read()
-j=json.loads(web_pg)
-print j['geom']['coordinates']
-```
-
-### Búsqueda de padrón 
-
-**Recurso**: Ubicación
-
-**URI**: 
-```
-ubicacionesRest/padron/{numero} 
-```
-
-**Descripción**: Recibe el token numero correspondiente al numero de padrón y devuelve su centroide
-
-
-**Ejemplo** (Python): 
-
-```
-import json
-import urllib
-import urllib2
-
-padron=1
-url_base='http://www.montevideo.gub.uy/ubicacionesRest/'
-
-r=urllib2.urlopen(url_base+'padron/'+str(padron))
-web_pg=r.read()
-j=json.loads(web_pg)
-print j['geom']['coordinates']
-```
