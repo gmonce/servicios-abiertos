@@ -146,7 +146,7 @@ r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia)
 web_pg=r.read()
 j=json.loads(web_pg)
 for pasada in j:
-	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']{code} |
+	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']
 ```
 
 ### Horarios de pasada, por línea
@@ -177,7 +177,7 @@ r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia+'/'+str(co
 web_pg=r.read()
 j=json.loads(web_pg)
 for pasada in j:
-	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']{code} |
+	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']
 ```
 
 
