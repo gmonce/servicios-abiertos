@@ -7,7 +7,6 @@ Intendencia de Montevideo
 Recursos
 --------
 
-<table>
 | Recurso       | Métodos | Descripción | Media-Type | Schema | Ejemplo |
 | ------------- | ------- | ----------- | ---------- | ------ | ------- |
 <tr><td>Calle</td>
