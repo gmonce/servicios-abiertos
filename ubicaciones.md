@@ -90,7 +90,7 @@ r=urllib2.urlopen(url_base+'calles/?nombre='+nombre_via)
 web_pg=r.read()
 j=json.loads(web_pg)
 for vias in j:
-	print vias['codigo'],vias['nombre']{code} |
+	print vias['codigo'],vias['nombre']
 
 ```
 
