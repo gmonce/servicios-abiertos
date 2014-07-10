@@ -93,7 +93,20 @@ for vias in j:
 	print vias['codigo'],vias['nombre']{code} |
 
 ```
-| Calle | ubicacionesRestWEB/ubicacion/cruces/\{codigo_calle\}/?nombre=\{texto\} | Recibe en el token \{codigo_calle\} un código de vía válido y en el token \{texto\} parte del nombre de otra vía y devuelve una lista de vías que incluyan el texto y crucen a la calle original. Si no se incluye el texto, devuelve todos los cruces. | {code}
+
+### Búsqueda de vías de tránsito que cruzan a otra 
+
+**Recurso**: Calle
+
+**URI**: 
+```
+ubicacionesRestWEB/ubicacion/cruces/{codigo_calle}/?nombre={texto} 
+```
+
+**Descripción**: Recibe en el token `codigo_calle` un código de vía válido y en el token `texto` parte del nombre de otra vía y devuelve una lista de vías que incluyan el texto y crucen a la calle original. Si no se incluye el texto, devuelve todos los cruces. 
+
+**Ejemplo** (Python): 
+```
 import json
 import urllib
 import urllib2
@@ -107,7 +120,12 @@ r=urllib2.urlopen(url)
 web_pg=r.read()
 j=json.loads(web_pg)
 for vias in j:
-	print vias['codigo'],vias['nombre'] {code} |
+	print vias['codigo'],vias['nombre']
+
+```
+
+
+ {code} |
 | Ubicación | ubicacionesRestWEB/ubicacion/esquina/\{via1\}/\{via2} | Recibe en los tokens \{via1\} y \{via2\} dos códigos de vía válidos, y devuelve el punto del mapa con la ubicación | {code}import json
 import urllib
 import urllib2
