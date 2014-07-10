@@ -7,9 +7,12 @@ Intendencia de Montevideo
 Recursos
 --------
 
+<table>
 | Recurso       | Métodos | Descripción | Media-Type | Schema | Ejemplo |
 | ------------- | ------- | ----------- | ---------- | ------ | ------- |
-| Calle | 
+<tr><td>Calle</td>
+
+ 
 | Calle (debería ser vía) | GET | Este recurso incluye el código y el nombre de una calle | application/json | <p>{code}{ \
 	"title" : "calle",
 	"type" : "object",
