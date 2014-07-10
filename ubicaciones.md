@@ -1,7 +1,4 @@
-Servicios RESTful de Ubicaciones 
-================================
-
-*Intendencia de Montevideo*
+## Servicios Abiertos de Ubicaciones - Intendencia de Montevideo
 
 ## Recursos
 
