@@ -1,11 +1,9 @@
 Servicios RESTful de Ubicaciones 
 ================================
 
-Intendencia de Montevideo
-=========================
+*Intendencia de Montevideo*
 
-Recursos
---------
+## Recursos
 
 ### Calle
 
@@ -57,18 +55,14 @@ Schema:
 	"required": ["geom"]
  	"description": "Ubicación en Montevideo"
  } 
+```
 
 Ejemplo:
-
 ```
 {"geom":\{"type":"Point","coordinates":[573153.204,6140488.1186]}
 ```
 
-k
-
-
-
-h2. URIs
+## URIs
 
 
 || Recurso || URI || Descripción || Ejemplo (python) ||
