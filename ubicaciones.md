@@ -33,12 +33,13 @@ Servicios RESTful de Ubicaciones
 ```
 ### Ubicación
 
-**Métodos***: GET
+**Métodos**: GET
 
 **Descripción**: Punto en el mapa 
 
 **Media-Type**: application/geojson 
-**Schema***:
+
+**Schema**:
 ```
 {
 	"title": "ubicacion",
@@ -72,7 +73,7 @@ Servicios RESTful de Ubicaciones
 ubicacionesRestWEB/ubicacion/calles/?nombre={texto} 
 ```
 
-**Descripción**: Recibe en el token \{texto\} parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre 
+**Descripción**: Recibe en el token `{texto}` parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre 
 
 **Ejemplo** (Python): 
 
