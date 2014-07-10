@@ -204,5 +204,4 @@ r=urllib2.urlopen(url_base+'padron/'+str(padron))
 web_pg=r.read()
 j=json.loads(web_pg)
 print j['geom']['coordinates']
-~                                     
 ```
