@@ -125,28 +125,28 @@ for linea in j['lineas']:
 
 **URI**: 
 ```
-transporteRest/{parada}/{tipo_dia} 
 transporteRest/pasadas/{parada}/{tipo_dia}/{hora} 
 ```
 
-**Descripción**: Recibe un código de parada de ómnibus, y un tipo de día ("HABIL","SABADO","DOMINGO") y devuelve la lista de todas las pasadas en el día. Si además se especifica una hora, entonces solamente devuelve las siguientes diez pasadas luego de la hora especificada. 
+**Descripción**: Recibe un código de parada de ómnibus, un tipo de día ("HABIL","SABADO","DOMINGO"), y una hora, devuelve las siguientes diez pasadas luego de la hora especificada, en el tipo de día indicado. 
 
 **Ejemplo** (Python): 
 ```
 import json
-### Horarios de pasada 
 import urllib
 import urllib2
 
 codigo_parada=3029
 tipo_dia='HABIL'
+hora='10:00'
 url_base='http://www.montevideo.gub.uy/transporteRest/'
 
-r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia)
+print url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia
+r=urllib2.urlopen(url_base+'pasadas/'+str(codigo_parada)+'/'+tipo_dia+'/'+hora)
 web_pg=r.read()
 j=json.loads(web_pg)
 for pasada in j:
-	print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']
+    print "Línea", pasada['linea'], "Hora:",str(pasada['horaDesc']), "Destino:",pasada['destino']
 ```
 
 ### Horarios de pasada, por línea
