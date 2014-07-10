@@ -7,25 +7,14 @@ Intendencia de Montevideo
 Recursos
 --------
 
-<table>
-<tr><td>Recurso</td><td>Schema</td>
-<tr><td>Calle</td><td>{code}{ \
-        "title" : "calle",
-        "type" : "object",
-        "properties" : {
-                {"nombre" : {"type": "string"}},
-                {"codigo" : {"type": "integer"}
-        }
-        "required": ["nombre" , "codigo"]
-        "description" : "Vía de tránsito de Montevideo"
-{code} <td></tr>
-</table>
+1. Calle
 
+Métodos: GET
+Descripción: Este recurso incluye el código y el nombre de una calle
+Media-Type: application/json
+Schema:
 
- 
-| Recurso       | Métodos | Descripción | Media-Type | Schema | Ejemplo |
-| ------------- | ------- | ----------- | ---------- | ------ | ------- |
-| Calle (debería ser vía) | GET | Este recurso incluye el código y el nombre de una calle | application/json | <p>{code}{ \
+{code}{ \
 	"title" : "calle",
 	"type" : "object",
 	"properties" : {
@@ -34,7 +23,13 @@ Recursos
  	}
 	"required": ["nombre" , "codigo"]
  	"description" : "Vía de tránsito de Montevideo"
-</p> }{code} | \{"nombre": "AV AGRACIADA" , "codigo" : 126\} |
+}{code} 
+
+Ejemplo:
+{code}
+{"nombre": "AV AGRACIADA" , "codigo" : 126\} 
+{code}
+
 
 | Ubicación | GET | Punto en el mapa | application/geojson | {code} {
 	"title": "ubicacion",
