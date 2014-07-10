@@ -7,7 +7,7 @@
 
 **Métodos**: GET
 
-**Descripción:*** Línea de ómnibus 
+**Descripción:** Línea de ómnibus 
 
 **Media-Type**: application/json 
 
