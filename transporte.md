@@ -92,35 +92,6 @@
 
 ## URIs 
 
-### Búsqueda de calle por nombre
-
-**Recurso**: Calle
-
-**URI**: 
-```
-ubicacionesRest/calles/?nombre={texto} 
-```
-
-**Descripción**: Recibe en el token `texto` parte del nombre de una calle, y devuelve una lista de calles que incluyan el texto en su nombre 
-
-**Ejemplo** (Python): 
-
-```
-import json
-import urllib
-import urllib2
-
-nombre_via='agra'
-url_base='http://www.montevideo.gub.uy/ubicacionesRest/'
-
-print url_base+'calles/?nombre='+nombre_via
-r=urllib2.urlopen(url_base+'calles/?nombre='+nombre_via)
-web_pg=r.read()
-j=json.loads(web_pg)
-for vias in j:
-	print vias['codigo'],vias['nombre']
-
-```
 ### Búsqueda de líneas por parada 
 **Recurso**: Parada y líneas 
 
