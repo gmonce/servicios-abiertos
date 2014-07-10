@@ -7,8 +7,6 @@ Intendencia de Montevideo
 Recursos
 --------
 
-| Recurso       | Métodos | Descripción | Media-Type | Schema | Ejemplo |
-| ------------- | ------- | ----------- | ---------- | ------ | ------- |
 <table>
 <tr><td>Recurso</td><td>Schema</td>
 <tr><td>Calle</td><td>{code}{ \
@@ -21,9 +19,12 @@ Recursos
         "required": ["nombre" , "codigo"]
         "description" : "Vía de tránsito de Montevideo"
 {code} <td></tr>
+</table>
 
 
  
+| Recurso       | Métodos | Descripción | Media-Type | Schema | Ejemplo |
+| ------------- | ------- | ----------- | ---------- | ------ | ------- |
 | Calle (debería ser vía) | GET | Este recurso incluye el código y el nombre de una calle | application/json | <p>{code}{ \
 	"title" : "calle",
 	"type" : "object",
