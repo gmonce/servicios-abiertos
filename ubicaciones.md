@@ -30,9 +30,9 @@ Schema:
 ```
 
 Ejemplo:
-{code}
-{"nombre": "AV AGRACIADA" , "codigo" : 126\} 
-{code}
+```
+{"nombre": "AV AGRACIADA" , "codigo" : 126} 
+```
 
 
 | Ubicación | GET | Punto en el mapa | application/geojson | {code} {
