@@ -33,9 +33,17 @@ Ejemplo:
 ```
 {"nombre": "AV AGRACIADA" , "codigo" : 126} 
 ```
+### Ubicación
 
 
-| Ubicación | GET | Punto en el mapa | application/geojson | {code} {
+Métodos: GET
+
+Desripción: Punto en el mapa 
+
+Media-Type: application/geojson 
+Schema:
+```
+{
 	"title": "ubicacion",
 	"type": "object",
 	"properties":{
@@ -48,7 +56,16 @@ Ejemplo:
 	}
 	"required": ["geom"]
  	"description": "Ubicación en Montevideo"
- } {code} | \{"geom":\{"type":"Point","coordinates":[573153.204,6140488.1186]\}\} |
+ } 
+
+Ejemplo:
+
+```
+{"geom":\{"type":"Point","coordinates":[573153.204,6140488.1186]}
+```
+
+k
+
 
 
 h2. URIs
